@@ -1,35 +1,25 @@
+
 <template>
-  <div class="hello">
+  
+	<el-container style="height:100%" direction="vertical">
+		<el-header class="Iheader" style="width:99%;height: 80px; padding: 0">
+			<indexH ></indexH>
+		</el-header>
+		<el-header style="padding: 0; margin-top: 10px;">
+			<indexMu></indexMu>
+		</el-header>
+		
+	</el-container>
+	  
 	
-    <div class="line"></div>
-	
-    <el-menu
-      :default-active="activeIndex2"
-      class="el-menu-demo"
-      mode="horizontal"
-      @select="handleSelect"
-      background-color="#409EFF"
-      text-color="#ffffff"
-      active-text-color="#ffffff"
-	  >
-      <el-menu-item index="1">我的工作</el-menu-item>
-	  <el-submenu index="2">
-	    <template slot="title">系统管理</template>
-	    <el-menu-item index="2-1">机构人员管理</el-menu-item>
-	    <el-menu-item index="2-2">参数配置</el-menu-item>
-	    <el-menu-item index="2-3">品种配置</el-menu-item>
-	    <el-submenu index="2-4">
-	      <template slot="title">选项4</template>
-	      <el-menu-item index="2-4-1">选项1</el-menu-item>
-	      <el-menu-item index="2-4-2">选项2</el-menu-item>
-	      <el-menu-item index="2-4-3">选项3</el-menu-item>
-	    </el-submenu>
-	  </el-submenu>
-    </el-menu>
-  </div>
+    
+  
 </template>
 
 <script>
+import indexH from './index-head'
+import indexMu from './index-muen'
+import indexMain from './index-main'
 export default {
     data() {
       return {
@@ -41,7 +31,12 @@ export default {
       handleSelect(key, keyPath) {
         window.console.log(key, keyPath);
       }
-    }
+    },
+	components: {
+		"indexH":indexH,
+		"indexMu":indexMu,
+		"indexMain":indexMain
+	}, 
   }
 
 
@@ -49,22 +44,13 @@ export default {
 </script>
 
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
+
+<style >
+.el-header{
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+
 /*.el-menu--horizontal>.el-menu-item.is-active {
     border-bottom: 2px solid #E6A23C !important;;
 }*/
