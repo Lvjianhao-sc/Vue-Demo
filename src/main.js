@@ -17,6 +17,10 @@ import CollapseTransition from 'element-ui/lib/transitions/collapse-transition';
 Vue.use(CollapseTransition.name, CollapseTransition)
 Vue.use(ElementUI, { size: 'max', zIndex: 3000 });//安装ElementUi 设置组件的默认尺寸均为 'small'，弹框的初始 z-index 为 3000
 //--------UI样式结束-------//
+import * as echarts from 'echarts/lib/echarts';
+// 引入 echarts 主模块。
+
+Vue.prototype.$echarts =echarts;
 
 
 Vue.prototype.$axios = Http; //设置全局通信对象

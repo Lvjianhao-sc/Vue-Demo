@@ -7,14 +7,14 @@
 //1测试 2生产
 const urlType = 1;
 //请求前置链接地址
-const baseURL = urlType==1?'http://20.22.246.76:8080/default/':'www.baidu.com';
+const baseURL = urlType;
 //
 const token = '123456'
 //
 const userSite = '上海农商行'
 //用于存储Session信息
 let userObject = { 
-	userNum:'',
+	sessionid:'',
 };
 
 

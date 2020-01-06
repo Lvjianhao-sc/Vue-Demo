@@ -1,10 +1,11 @@
 <template>
 	<div id = "login">
-		<img alt="Vue logo" src="../assets/logo.png">
-		<span>{{zt}}</span><br>
+		<img alt="Vue logo" src="../assets/logo.png"><br>
 		<input class="login-input" type="text"  v-model="username" placeholder="请输入账号"><br>
 		<input class="login-input" type="password" v-model="password" placeholder="请输入密码"><br>
 		<button class="login-button" v-on:click="login()" type="submit">登陆</button><br>
+		<button class="login-button" v-on:click="selectOrg()" type="submit">选机构</button><br>
+		<button class="login-button" v-on:click="query()" type="submit">查询</button><br>
 		<router-link :to="{name:'index', query: {id:1}}">去首页1</router-link><br>
 		<router-link :to="{path:'index', query: {id:2}}">去首页2</router-link>
 	</div>
@@ -20,7 +21,6 @@ export default {
 	return{
 		username:'',
 		password:'' ,
-		zt:'nmsl'
 	}
   },
   created:function(){
@@ -31,11 +31,45 @@ export default {
 		let _this = this; //$axios内的this为$axios对象,所以在回调需要用到的时候一定要区分开来
 		window.console.log(_this.username);
 		window.console.log(_this.password);
-		window.console.log(this.Global.baseURL+'com.bos.acc.acccustomerfinance.addAccCustomerFinance.biz.ext');
 		this.$axios({
 			method:'post',
-			data:{username:_this.username,password:_this.password},
-			url:this.Global.baseURL+'com.bos.acc.acccustomerfinance.addAccCustomerFinance.biz.ext'
+			data:{userId:_this.username,password:_this.password},
+			url:'/app/com.bos.utp.auth.LoginManager.appSingleLogin.biz.ext'
+		}).then(function(res){
+			window.console.log(res.data.msg);
+			//document.cookie = '9AEDA632496CCD0063A557C39E6A6E5A';
+			//res.data.userObject.sessionId = '9AEDA632496CCD0063A557C39E6A6E5A';
+			_this.Global.userObject = res.data.userObject;
+			_this.zt = res.data.msg;
+			if(_this.Global.userObject.sessionId){
+				_this.$router.push({name:'index',params: {id:'1',msg:'这里是首页'}}) // post的方式，只能用name
+			}
+		});
+	},
+	selectOrg(){
+		let _this = this; //$axios内的this为$axios对象,所以在回调需要用到的时候一定要区分开来
+		window.console.log(_this.username);
+		window.console.log(_this.password);
+		this.$axios({
+			method:'post',
+			data:{orgid:'10000'},
+			url:'/app/com.bos.utp.auth.LoginManager.rnSelectOrg.biz.ext'
+		}).then(function(res){
+			window.console.log(res.data.msg);
+			_this.zt = res.data.msg;
+			if(res.data.msg=="登录成功"){
+				_this.$router.push({name:'index',params: {id:'1',msg:'这里是首页'}}) // post的方式，只能用name
+			}
+		});
+	},
+	query(){
+		let _this = this; //$axios内的this为$axios对象,所以在回调需要用到的时候一定要区分开来
+		window.console.log(_this.username);
+		window.console.log(_this.password);
+		this.$axios({
+			method:'post',
+			data:{orgid:'10000'},
+			url:'/app/com.bos.bps.op.WorkFlowManager.queryWorkingList.biz.ext'
 		}).then(function(res){
 			window.console.log(res.data.msg);
 			_this.zt = res.data.msg;

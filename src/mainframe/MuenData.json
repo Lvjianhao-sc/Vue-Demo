@@ -1,0 +1,329 @@
+listNav: [
+            {
+                name: "dldt",
+                text: "地理地图",
+                url: "http://10.156.121.38:9000/gwUap",
+                extopts: { "/dldt@@el-icon-location": "" },
+                items: [],
+                outter: false
+            },
+            {
+                name: "jccx",
+                text: "基础查询",
+                url: "http://10.156.121.38:9000/gwUap",
+                extopts: { "/jccx@@el-icon-search": "" },
+                items: [
+                    {
+                        name: "cxdw",
+                        text: "查询定位",
+                        url: "http://10.156.121.38:9000/gwUap",
+                        extopts: { "/cxdw": "" },
+                        items: [
+                            {
+                                name: "dwcx",
+                                text: "定位查询",
+                                url: "http://10.156.121.38:9000/gwUap",
+                                extopts: { "/dwcx": "" },
+                                items: [],
+                                outter: false
+                            },
+                            {
+                                name: "dlzhcx",
+                                text: "电缆综合查询",
+                                url: "http://10.156.121.38:9000/gwUap",
+                                extopts: { "/dlzhcx": "" },
+                                items: [],
+                                outter: false
+                            },
+                            {
+                                name: "scfzsszhcx",
+                                text: "生产辅助设施综合查询",
+                                url: "http://10.156.121.38:9000/gwUap",
+                                extopts: { "/scfzsszhcx": "" },
+                                items: [],
+                                outter: false
+                            },
+                            {
+                                name: "tdzhcx",
+                                text: "通道综合查询",
+                                url: "http://10.156.121.38:9000/gwUap",
+                                extopts: { "/tdzhcx": "" },
+                                items: [],
+                                outter: false
+                            },
+                            {
+                                name: "tdnxcx",
+                                text: "通道年限查询",
+                                url: "http://10.156.121.38:9000/gwUap",
+                                extopts: { "/tdnxcx": "" },
+                                items: [],
+                                outter: false
+                            },
+                            {
+                                name: "jhcx",
+                                text: "几何查询",
+                                url: "http://10.156.121.38:9000/gwUap",
+                                extopts: { "/jhcx": "" },
+                                items: [],
+                                outter: false
+                            }
+                        ]
+                        outter: false
+                    },
+                    {
+                        name: "dlzycxfx",
+                        text: "电缆资源查询分析",
+                        url: "http://10.156.121.38:9000/gwUap",
+                        extopts: { "/dlzycxfx": "" },
+                        items: [
+                            {
+                                name: "dlmspmcx",
+                                text: "电缆埋设剖面查询",
+                                url: "http://10.156.121.38:9000/gwUap",
+                                extopts: { "/dlmspmcx": "" },
+                                items: [],
+                                outter: false
+                            },
+                            {
+                                name: "dljpmtcx",
+                                text: "电缆井剖面图查询",
+                                url: "http://10.156.121.38:9000/gwUap",
+                                extopts: { "/dljpmtcx": "" },
+                                items: [],
+                                outter: false
+                            }
+                        ]
+                        outter: false
+                    },
+                    {
+                        name: "txsc",
+                        text: "图形输出",
+                        url: "http://10.156.121.38:9000/gwUap",
+                        extopts: { "/txsc": "" },
+                        items: [
+                            {
+                                name: "dqtfdy",
+                                text: "当前图幅打印",
+                                url: "http://10.156.121.38:9000/gwUap",
+                                extopts: { "/dqtfdy": "" },
+                                items: [],
+                                outter: false
+                            },
+                            {
+                                name: "lkdy",
+                                text: "拉框打印",
+                                url: "http://10.156.121.38:9000/gwUap",
+                                extopts: { "/lkdy": "" },
+                                items: [],
+                                outter: false
+                            }
+                        ]
+                        outter: false
+                    }
+                ]
+                outter: false
+            },
+            {
+                name: "ywgl",
+                text: "业务管理",
+                url: "http://10.156.121.38:9000/gwUap",
+                extopts: { "/ywgl@@el-icon-tickets": "" },
+                items: [
+                    {
+                        name: "zzbd",
+                        text: "政治保电",
+                        url: "http://10.156.121.38:9000/gwUap",
+                        extopts: { "/zzbd": "" },
+                        items: [
+                            {
+                                name: "bdrwd",
+                                text: "保电任务单",
+                                url: "http://10.156.121.38:9000/gwUap",
+                                extopts: {
+                                    "/BusinessManagement/politicalProtection/protectTacks/protectTack":
+                                        ""
+                                }
+                                items: [],
+                                outter: false
+                            }
+                        ]
+                        outter: false
+                    },
+                    {
+                        name: "gzt",
+                        text: "工作台",
+                        url: "http://10.156.121.38:9000/gwUap",
+                        extopts: { "/gzt": "" },
+                        items: [],
+                        outter: false
+                    },
+                    {
+                        name: "dmgl",
+                        text: "断面管理",
+                        url: "http://10.156.121.38:9000/gwUap",
+                        extopts: { "/dmgl": "" },
+                        items: [],
+                        outter: false
+                    },
+                    {
+                        name: "jhgl",
+                        text: "计划管理",
+                        url: "http://10.156.121.38:9000/gwUap",
+                        extopts: { "/jhgl": "" },
+                        items: [],
+                        outter: false
+                    },
+                    {
+                        name: "xsjcgl",
+                        text: "巡视检测管理",
+                        url: "http://10.156.121.38:9000/gwUap",
+                        extopts: { "/xsjcgl": "" },
+                        items: [],
+                        outter: false
+                    },
+                    {
+                        name: "yhgl",
+                        text: "隐患管理",
+                        url: "http://10.156.121.38:9000/gwUap",
+                        extopts: { "/yhgl": "" },
+                        items: [],
+                        outter: false
+                    },
+                    {
+                        name: "fxgk",
+                        text: "风险管控",
+                        url: "http://10.156.121.38:9000/gwUap",
+                        extopts: { "/fxgk": "" },
+                        items: [],
+                        outter: false
+                    },
+                    {
+                        name: "qxgl",
+                        text: "缺陷管理",
+                        url: "http://10.156.121.38:9000/gwUap",
+                        extopts: { "/qxgl": "" },
+                        items: [],
+                        outter: false
+                    },
+                    {
+                        name: "gzgl",
+                        text: "故障管理",
+                        url: "http://10.156.121.38:9000/gwUap",
+                        extopts: { "/gzgl": "" },
+                        items: [],
+                        outter: false
+                    },
+                    {
+                        name: "yxztpj",
+                        text: "运行状态评价",
+                        url: "http://10.156.121.38:9000/gwUap",
+                        extopts: { "/yxztpj": "" },
+                        items: [],
+                        outter: false
+                    },
+                    {
+                        name: "gcjsgl",
+                        text: "工程建设管理",
+                        url: "http://10.156.121.38:9000/gwUap",
+                        extopts: { "/gcjsgl": "" },
+                        items: [],
+                        outter: false
+                    }
+                ]
+                outter: false
+            },
+            {
+                name: "jkzz",
+                text: "监控主站",
+                url: "http://10.156.121.38:9000/gwUap/Monitoring",
+                extopts: { "/jkzz@@el-icon-view": "" },
+                items: [],
+                outter: false
+            },
+            {
+                name: "znxj",
+                text: "智能巡检",
+                url: "http://10.156.121.38:9000/gwUap",
+                extopts: { "/Polling@@el-icon-sort": "" },
+                items: [],
+                outter: false
+            },
+            {
+                name: "tjfx",
+                text: "统计分析",
+                url: "http://10.156.121.38:9000/gwUap/Statistics",
+                extopts: { "/tjfx@@el-icon-edit": "" },
+                items: [],
+                outter: false
+            },
+            {
+                name: "zhxx",
+                text: "综合信息",
+                url: "http://10.156.121.38:9000/gwUap/Synthesize",
+                extopts: { "/zhxx@@el-icon-document": "" },
+                items: [],
+                outter: false
+            },
+            {
+                name: "zbkb",
+                text: "指标看板",
+                url: "http://10.156.121.38:9000/gwUap/Board",
+                extopts: { "/zbkb@@el-icon-news": "" },
+                items: [],
+                outter: false
+            },
+            {
+                name: "ztt",
+                text: "专题图",
+                url: "http://10.156.121.38:9000/gwUap",
+                extopts: { "/ztt@@el-icon-picture-outline": "" },
+                items: [
+                    {
+                        name: "jkfb",
+                        text: "监控分布",
+                        url: "http://10.156.121.38:9000/gwUap",
+                        extopts: { "/jkfb": "" },
+                        items: [],
+                        outter: false
+                    },
+                    {
+                        name: "jkgj",
+                        text: "监控警告",
+                        url: "http://10.156.121.38:9000/gwUap",
+                        extopts: { "/jkgj": "" },
+                        items: [],
+                        outter: false
+                    },
+                    {
+                        name: "tdzyl",
+                        text: "通道占用率",
+                        url: "http://10.156.121.38:9000/gwUap",
+                        extopts: { "/tdzyl": "" },
+                        items: [],
+                        outter: false
+                    },
+                    {
+                        name: "tdfj",
+                        text: "通道分级",
+                        url: "http://10.156.121.38:9000/gwUap",
+                        extopts: { "/tdfj": "" },
+                        items: [],
+                        outter: false
+                    },
+                    {
+                        name: "gcjsgl",
+                        text: "工程建设管理",
+                        url: "http://10.156.121.38:9000/gwUap",
+                        extopts: { "/gcjsgl": "" },
+                        items: [],
+                        outter: false
+                    },
+                    {
+                        name: "yhgl",
+                        text: "隐患管理",
+                        url: "http://10.156.121.38:9000/gwUap",
+                        extopts: { "/yhgl": "" },
+                        items: [],
+                        outter: false
+                    }
+                ]
