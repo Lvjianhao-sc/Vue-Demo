@@ -1,14 +1,20 @@
 
 <template>
-  
-	<el-container style="height:100%" direction="vertical">
+	
+	<el-container id ="nmsl" style="height:100%" direction="vertical">
+		
+		<float-icons>
+			<div style="border:1px solid red">
+				
+			</div>
+		</float-icons>
 		<el-header class="Iheader" style="margin-top:0px;height: 70px; padding: 0">
 			<indexH ></indexH>
 		</el-header>
 		<el-header style="padding: 0; margin-top: 0px;">
-			<indexMu></indexMu>
+			<indexMu :clickMenu = "clickMenu"></indexMu>
 		</el-header>
-		<div id = "main" style="padding: 0; margin-top: 0px; float: left;">
+		<div id = "indexmain" v-if="indexFlag==true" style="padding: 0; margin-top: 0px; float: left;">
 			<el-row :gutter="10" >
 				<el-col :span="22" style="padding: 0; margin-left: 1%;">
 					<indexMain></indexMain>
@@ -22,11 +28,14 @@
 				
 			</el-row>
 		</div>
+		<div id = "main" v-if="indexFlag==false" style="min-height:400px;padding: 0; margin-top: 0px; float: left;">
+			<router-view></router-view>
+		</div>
 		<el-footer id = "indexFooter">
 			@copy-right:xxxxxx......
 		</el-footer>
 	</el-container>
-	  
+	 
 	
     
   
@@ -37,22 +46,52 @@ import indexH from './index-head'
 import indexMu from './index-menu'
 import indexMuLF from './index-menu-left'
 import indexMain from './index-main'
+import floaticon from './component/floaticon'
 export default {
+	inject: ['reload'],
+	created: function(){
+		window.console.log(this.Global.indexFlag)
+		this.indexFlag = this.Global.indexFlag;
+	},
     data() {
       return {
-       
+		indexFlag:true
       };
     },
     methods: {
       handleSelect(key, keyPath) {
         window.console.log(key, keyPath);
-      }
+      },
+	  clickMenu(menu){//给予菜单页面使用
+		  this.$message('预备切换至：'+menu.name);
+		  this.Global.indexFlag=false;//隐藏原首页
+		  this.$router.push(menu.path).catch(err => { 
+			if(err.message.indexOf("is not allowed")>=0){
+				this.$message({
+					message: '已经在这个页面了',
+					type: 'warning',
+					showClose:true
+				});	
+			};
+			if(err.message.indexOf("is not allowed")<=0){
+				this.$message({
+					message: '功能页未开发',
+					type: 'error',
+					showClose:true
+				});	
+			}
+		  		
+		  })
+		  
+		  this.reload();
+	  }
     },
 	components: {
 		"indexH":indexH,
 		"indexMu":indexMu,
 		"indexMuLF":indexMuLF,
-		"indexMain":indexMain,		
+		"indexMain":indexMain,	
+		"float-icons":floaticon,
 	}, 
   }
 
@@ -75,6 +114,7 @@ export default {
 	color: #CCCCCC;
 	font-size: 14px;
 	font-family: "微软雅黑";
+	height:40px;
 	
 }
 /*.el-menu--horizontal>.el-menu-item.is-active {

@@ -1,5 +1,6 @@
 <template>
 	<div id = "m">
+		
 		<el-row :gutter="20">
 			<el-col :span="8" >
 				<div class="grid-content "> echarts </div>

@@ -69,7 +69,7 @@ export default {
 		this.$axios({
 			method:'post',
 			data:{orgid:'10000'},
-			url:'/app/com.bos.bps.op.WorkFlowManager.queryWorkingList.biz.ext'
+			url:'http://1.1.1.1:1111/com.bos.bps.op.WorkFlowManager.queryWorkingList.biz.ext'
 		}).then(function(res){
 			window.console.log(res.data.msg);
 			_this.zt = res.data.msg;

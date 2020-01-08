@@ -17,6 +17,8 @@ let userObject = {
 	sessionid:'',
 };
 
+let indexFlag = true;//是否展示首页信息
+
 
 //向引用处暴露的内容
 export default {
@@ -24,4 +26,5 @@ export default {
   token,
   userSite,
   userObject,
+  indexFlag,
 }
