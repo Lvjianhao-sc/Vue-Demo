@@ -2,12 +2,6 @@
 <template>
 	
 	<el-container id ="nmsl" style="height:100%" direction="vertical">
-		
-		<float-icons>
-			<div style="border:1px solid red">
-				
-			</div>
-		</float-icons>
 		<el-header class="Iheader" style="margin-top:0px;height: 70px; padding: 0">
 			<indexH ></indexH>
 		</el-header>
@@ -47,11 +41,58 @@ import indexMu from './index-menu'
 import indexMuLF from './index-menu-left'
 import indexMain from './index-main'
 import floaticon from './component/floaticon'
+import timeline from '../workFlow/flowTimeLine'//测试使用
 export default {
 	inject: ['reload'],
 	created: function(){
 		window.console.log(this.Global.indexFlag)
 		this.indexFlag = this.Global.indexFlag;
+		let _this = this;
+		let cot = 0;
+		setInterval(function (){
+			
+			window.console.log(cot)
+			if(cot==1){
+				_this.$notify({
+					title: '成功',
+				    message: '您刚才查询的XXXX客户报告已生成结果。',
+				    type: 'success'
+				});					
+			}
+			else if(cot==2){
+				_this.$notify({
+					title: '警告',
+				    message: '您刚才查询的XXXX客户报告查询时间过长。',
+				    type: 'warning'
+				});				
+			}
+			else if(cot==3){
+				_this.$notify.info({
+					title: '提示',
+				    message: '您有一条新的消息，请查收',
+				});				
+			}
+			else if(cot==4){
+				_this.$notify({
+				  title: '错误',
+				  message: '这是一条错误的提示消息',
+				  type: 'error'
+				});		
+			}else if(cot==5){
+				let tmp = _this.$createElement('timeline');
+				_this.$notify({
+						  title: '流程更新提醒',
+						  dangerouslyUseHTMLString: true,
+						  message: tmp
+				});					
+			}else{
+				cot=0;
+			}
+			cot++;
+			
+			
+			
+		},60000)
 	},
     data() {
       return {
@@ -92,6 +133,7 @@ export default {
 		"indexMuLF":indexMuLF,
 		"indexMain":indexMain,	
 		"float-icons":floaticon,
+		"timeline":timeline,
 	}, 
   }
 
