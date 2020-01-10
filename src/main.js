@@ -12,12 +12,14 @@ import '@/config/axios' //通信拦截
 import './mock/mock.js' //模拟响应使用(在无法通信后台的情况下调试使用)
 //--------Element UI样式开始-------//
 import ElementUI from 'element-ui'; //ElementUI 组件
-import './style/theme/index.css';//ElementUI fade/zoom 淡入淡出动画
-import 'element-ui/lib/theme-chalk/base.css'; //ElementUI collapse 展开折叠动画
-import CollapseTransition from 'element-ui/lib/transitions/collapse-transition';
+//import './style/theme/index.css';//ElementUI 样式
+import 'element-ui/lib/theme-chalk/index.css'; //ElementUI 样式
+import 'element-ui/lib/theme-chalk/base.css'; //fade/zoom 淡入淡出动画
+import CollapseTransition from 'element-ui/lib/transitions/collapse-transition';//ElementUI collapse 展开折叠动画
 Vue.use(CollapseTransition.name, CollapseTransition)
-Vue.use(ElementUI, { size: 'small', zIndex: 3000 });//安装ElementUi 设置组件的默认尺寸均为 'small'，弹框的初始 z-index 为 3000
+Vue.use(ElementUI, { zIndex: 3000 });//安装ElementUi 设置组件的默认尺寸均为 'small'，弹框的初始 z-index 为 3000
 //--------ElementUI样式结束-------//
+
 import * as echarts from 'echarts/lib/echarts';//引入Echart
 Vue.prototype.$echarts =echarts;// 引入 echarts 主模块。
 import "./assets/iconfont/iconfont.css"; //引入阿里巴巴矢量图标库
