@@ -122,6 +122,9 @@
 <script>
   export default {
 	name:'empInfo',
+	props:{
+		empId:String
+	},
     data() {
       return {
         ruleForm: {

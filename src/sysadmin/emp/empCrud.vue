@@ -10,7 +10,7 @@
 		  top="50px"
 		>
 		  <!-- 表单内容 -->
-		  <empTabs></empTabs>
+		  <empTabs empid="12345"></empTabs>
 		</el-dialog>
 		
 		
