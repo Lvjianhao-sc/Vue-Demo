@@ -1,15 +1,20 @@
 <template>
 	<div id ="emp">
-		<!-- 弹出面板 -->
-		<el-drawer
-		  title="我是标题"
+		
+		
+		<el-dialog 
+		  :title="this.selectRow.name"
 		  :visible.sync="drawer"
 		  :direction="direction"
-		  :before-close="handleClose">
-		  <span>我来啦!</span>
-		</el-drawer>
-		  <span>我来啦!</span>
-		</el-drawer>
+		  :before-close="handleClose"
+		  top="50px"
+		>
+		  <!-- 表单内容 -->
+		  <empTabs></empTabs>
+		</el-dialog>
+		
+		
+		<!-- 列表部分 -->
 		<el-row  style="margin:0;padding:0">
 			<el-col class="orgTree" :span="6">
 				<el-tree
@@ -26,7 +31,7 @@
 				</el-tree>
 			</el-col>
 			<el-col class="nbsp" :span="0.1">
-				&nbsp
+				&nbsp{{this.selectRow.name}}
 			</el-col>
 			<el-col class="empmain" :span="17" >
 				<el-input placeholder="请输入内容" v-model="serchInput" class="input-with-select">
@@ -53,7 +58,7 @@
 				        <el-popover trigger="hover" placement="top">
 				          <p>姓名: {{ scope.row.name }}</p>
 				          <p>手机号: {{ scope.row.phone }}</p>
-						  <p>手机号: {{ scope.row.state }}</p>
+						  <p>状态: {{ scope.row.state }}</p>
 				          <div slot="reference" class="name-wrapper">
 				            <el-tag size="medium">{{ scope.row.name }}</el-tag>
 				          </div>
@@ -86,11 +91,16 @@
 	
 </template>
 <script>
+  import empTabs from './empEditTabs'
   export default {
+	components: {
+	"empTabs":empTabs,
+	}, 
     data() {
       return {
 		drawer: false,//面板状态
 		direction: 'rtl',//滑出方式
+		selectRow:{},//选中行
         props: {
           label: 'name',
           children: 'zones'
@@ -168,7 +178,8 @@
 	          return '';
 	   },
 	   rowEdit(index,row){
-		 this.drawer = true;
+		 this.drawer = true;//打开面板
+		 this.selectRow.row = row;
 	   },
 	   rowDelete(index,row){
 		 _this.$notify({
