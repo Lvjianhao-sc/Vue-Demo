@@ -8,23 +8,29 @@
 		<el-header style="padding: 0; margin-top: 0px;">
 			<indexMu :clickMenu = "clickMenu"></indexMu>
 		</el-header>
-		<div id = "indexmain" v-if="indexFlag==true" style="padding: 0; margin-top: 0px; float: left;">
-			<el-row :gutter="10" >
-				<el-col :span="22" style="padding: 0; margin-left: 1%;">
-					<indexMain></indexMain>
-				</el-col>
-				<el-col :span="0.1" >
-					<p>&nbsp</p>
-				</el-col>
-				<el-col :span="1.5" >
-					<indexMuLF></indexMuLF>
-				</el-col>
-				
-			</el-row>
-		</div>
-		<div id = "main" v-if="indexFlag==false" style="min-height:400px;padding: 0; margin-top: 0px; float: left;">
-			<router-view></router-view>
-		</div>
+		<el-collapse-transition name="el-zoom-in-bottom">
+			<div id = "indexmain" :show="(indexFlag==true)" v-if="indexFlag==true" style="padding: 0; margin-top: 0px; float: left;">
+				<el-row :gutter="10" >
+					<el-col :span="22" style="padding: 0; margin-left: 1%;">
+						<indexMain></indexMain>
+					</el-col>
+					<el-col :span="0.1" >
+						<p>&nbsp</p>
+					</el-col>
+					<el-col :span="1.5" >
+						<indexMuLF></indexMuLF>
+					</el-col>
+					
+				</el-row>
+			</div>
+		</el-collapse-transition>
+		<el-collapse-transition name="el-zoom-in-top">
+		    <div id = "main" :show="(indexFlag==false)" v-if="indexFlag==false" style="min-height:400px;padding: 0; margin-top: 0px; float: left;">
+		    	<router-view></router-view>
+		    </div>
+		</el-collapse-transition>
+		
+		
 		<el-footer id = "indexFooter">
 			@copy-right:xxxxxx......
 		</el-footer>

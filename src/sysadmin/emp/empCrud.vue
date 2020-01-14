@@ -55,12 +55,12 @@
 				    </el-table-column>
 				    <el-table-column label="姓名" >
 				      <template slot-scope="scope">
-				        <el-popover trigger="hover" placement="top">
+				        <el-popover trigger="hover"  placement="top">
 				          <p>姓名: {{ scope.row.name }}</p>
 				          <p>手机号: {{ scope.row.phone }}</p>
 						  <p>状态: {{ scope.row.state }}</p>
 				          <div slot="reference" class="name-wrapper">
-				            <el-tag size="medium">{{ scope.row.name }}</el-tag>
+				            <el-tag size="medium" :type="getTagType(scope.row)" >{{ scope.row.name }}</el-tag>
 				          </div>
 				        </el-popover>
 				      </template>
@@ -187,6 +187,10 @@
 		     message: '数据删除成功',
 		     type: 'success'
 		 });	
+	   },
+	   getTagType(row){
+		  window.console.log(row)
+		  return row.state!='运行'?(row.state=='停用'?'danger':'warning'):'';
 	   },
 	   handleClose(done) {
 	           this.$confirm('确认关闭？')

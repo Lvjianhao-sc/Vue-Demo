@@ -1,6 +1,6 @@
 <template>
 <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" size="mini" class="demo-ruleForm">
-	<el-backtop target=".page-component__scroll .el-scrollbar__wrap"></el-backtop>
+	
 	<el-row>
 		<el-col :span="12">
 		  <el-form-item label="工号" prop="user_no">
@@ -105,7 +105,7 @@
   <el-row>
   	<el-col :span="12">
 		<el-form-item>
-			<el-button size="medium" type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
+			<el-button size="medium" type="primary" @click="submitForm('ruleForm')">保存</el-button>
 		</el-form-item>
   	  
   	</el-col>
