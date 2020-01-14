@@ -8,7 +8,10 @@ module.exports = {
 	          '/app': {
 	            target: dev.API_ROOT,
 	            ws: true,
-	            changeOrigin: true
+	            changeOrigin: true,
+				pathRewrite:{
+				                '^/app':''
+				            }
 	          },
 	          '/other': {
 	            target: 'http://10.240.88.46:18323/crms'
