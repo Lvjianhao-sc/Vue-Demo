@@ -32,10 +32,12 @@ export default {
 		window.console.log(_this.username);
 		window.console.log(_this.password);
 		this.$axios({
-			method:'post',
-			data:{userId:_this.username,password:_this.password},
-			url:'/app/com.bos.utp.auth.LoginManager.appSingleLogin.biz.ext'
+			method:'get',
+			data:{'username':_this.username,'password':_this.password},
+			// url:'/app/com.bos.utp.auth.LoginManager.appSingleLogin.biz.ext'
+			url:'/app/system/login?username='+_this.username+'&password='+_this.password
 		}).then(function(res){
+			window.console.log(res);
 			window.console.log(res.data.msg);
 			//document.cookie = '9AEDA632496CCD0063A557C39E6A6E5A';
 			//res.data.userObject.sessionId = '9AEDA632496CCD0063A557C39E6A6E5A';
