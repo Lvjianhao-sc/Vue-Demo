@@ -9,7 +9,7 @@
 		  :before-close="handleClose"
 		  top="50px"
 		>
-		  <!-- 表单内容 -->
+		  <!-- 表单内容 -->·
 		  <empTabs empid="12345"></empTabs>
 		</el-dialog>
 		
@@ -36,8 +36,10 @@
 			<el-col class="empmain" :span="17" >
 				<el-input placeholder="请输入内容" v-model="serchInput" class="input-with-select">
 				    <el-select v-model="serchSelect" slot="prepend" placeholder="请选择">
-				      <el-option label="工号" value="user_num"></el-option>
-				      <el-option label="姓名" value="username"></el-option>
+				      <el-option label="用户编号" value="user_num"></el-option>
+				      <el-option label="用户名称" value="user_no"></el-option>
+					  <el-option label="登录名称" value="login_id"></el-option>
+					  <el-option label="最近登录时间" value="last_login_time"></el-option>
 				      <el-option label="机构" value="orgnum"></el-option>
 				    </el-select>
 				    <el-button slot="append" icon="el-icon-search"></el-button>
@@ -56,9 +58,12 @@
 				    <el-table-column label="姓名" >
 				      <template slot-scope="scope">
 				        <el-popover trigger="hover"  placement="top">
-				          <p>姓名: {{ scope.row.name }}</p>
-				          <p>手机号: {{ scope.row.phone }}</p>
-						  <p>状态: {{ scope.row.state }}</p>
+				          <p>姓名: {{ scope.row.user_nm }}</p>
+				          <p>手机号: {{ scope.row.mob_phone_no }}</p>
+						  <p>状态: {{ scope.row.record_sts }}</p>
+						  <p>性别: {{ scope.row.sex_cd }}</p>
+						  <p>邮件: {{ scope.row.email }}</p>
+						  <p>创建时间: {{ scope.row.sys_create_time }}</p>
 				          <div slot="reference" class="name-wrapper">
 				            <el-tag size="medium" :type="getTagType(scope.row)" >{{ scope.row.name }}</el-tag>
 				          </div>
@@ -93,6 +98,9 @@
 <script>
   import empTabs from './empEditTabs'
   export default {
+	created:function (){
+		//初始化方法写这里 最后 this.tableData = 查出来的值
+	},
 	components: {
 	"empTabs":empTabs,
 	}, 
@@ -111,25 +119,29 @@
 		mmp:'',
 		context:'',
 		tableData: [{
-		          user_num: '319977',
-		          name: '孙源鹏',
-		          phone: '18217284823',
-				  state:'运行'
+		          user_no: '319977',
+		          user_nm: '孙源鹏',
+		          mob_phone_no: '18217284823',
+				  record_sts:'运行',
+				  sex_cd:'男'
 		        }, {
 		          user_num: '302291',
-		          name: '王小虎',
-				  phone: '18217284823',
-				  state:'停用'
+		          user_nm: '王小虎',
+				  mob_phone_no: '18217284823',
+				  record_sts:'停用',
+				  sex_cd:'男'
 		        }, {
 		          user_num: '302912',
-		          name: '朱发营',
-				  phone: '18217284823',
-				  state:'锁定'
+		          user_nm: '朱发营',
+				  mob_phone_no: '18217284823',
+				  record_sts:'锁定',
+				  sex_cd:'女'
 		        }, {
 		          user_num: '10001',
-		          name: '董事长',
-		          phone: '18217284823',
-				  state:'运行'
+		          user_nm: '董事长',
+		          mob_phone_no: '18217284823',
+				  record_sts:'运行',
+				  sex_cd:'妖'
 		        }]
       };
     },
