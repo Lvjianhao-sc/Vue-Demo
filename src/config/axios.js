@@ -11,7 +11,7 @@ axios.defaults.withCredentials = true;//携带cookie信息保持SESSION同步
 // 前端请求拦截器
 axios.interceptors.request.use(function(config) {
 	window.console.log("请求地址:"+config.url)
-	config.url +=';jsessionid='+Global.default.userObject.sessionId;
+	config.url +='&Authorization='+Global.token;
   return config
 }, function(error) {
   return Promise.reject(error)

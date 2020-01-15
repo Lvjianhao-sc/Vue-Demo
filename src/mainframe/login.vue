@@ -1,3 +1,4 @@
+
 <template>
 	<div id = "login">
 		<img alt="Vue logo" src="../assets/logo.png"><br>
@@ -29,21 +30,30 @@ export default {
   methods:{
 	login(){
 		let _this = this; //$axios内的this为$axios对象,所以在回调需要用到的时候一定要区分开来
+		let Global = require('@/common/global_variable.js');
 		window.console.log(_this.username);
 		window.console.log(_this.password);
 		this.$axios({
 			method:'get',
-			data:{'username':_this.username,'password':_this.password},
-			// url:'/app/com.bos.utp.auth.LoginManager.appSingleLogin.biz.ext'
+			data:'',
+			// data:{'username':_this.username,'password':_this.password},
+			// url:'/app/system/login'
 			url:'/app/system/login?username='+_this.username+'&password='+_this.password
 		}).then(function(res){
 			window.console.log(res);
-			window.console.log(res.data.msg);
+			window.console.log(res.data.code);
+			window.console.log(res.data.message);
+			window.console.log(res.data.data);
+			window.console.log(res.data.data.token);
+			window.console.log(res.data.totle);
 			//document.cookie = '9AEDA632496CCD0063A557C39E6A6E5A';
 			//res.data.userObject.sessionId = '9AEDA632496CCD0063A557C39E6A6E5A';
-			_this.Global.userObject = res.data.userObject;
-			_this.zt = res.data.msg;
-			if(_this.Global.userObject.sessionId){
+			if(res.data.code==0){
+				_this.zt = res.data.code;
+				Global.token = res.data.data.token;
+			}
+			if(Global.token){
+				window.console.log("Global.token: "+Global.token);
 				_this.$router.push({name:'index',params: {id:'1',msg:'这里是首页'}}) // post的方式，只能用name
 			}
 		});

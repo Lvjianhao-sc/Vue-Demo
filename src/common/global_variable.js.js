@@ -9,7 +9,7 @@ const urlType = 1;
 //请求前置链接地址
 const baseURL = urlType;
 //
-const token = '123456'
+const token = ''
 //
 const userSite = '上海农商行'
 //用于存储Session信息
