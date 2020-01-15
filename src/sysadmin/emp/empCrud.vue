@@ -36,36 +36,36 @@
 			<el-col class="empmain" :span="17" >
 				<el-input placeholder="请输入内容" v-model="serchInput" class="input-with-select">
 				    <el-select v-model="serchSelect" slot="prepend" placeholder="请选择">
-				      <el-option label="用户编号" value="user_num"></el-option>
-				      <el-option label="用户名称" value="user_no"></el-option>
-					  <el-option label="登录名称" value="login_id"></el-option>
-					  <el-option label="最近登录时间" value="last_login_time"></el-option>
-				      <el-option label="机构" value="orgnum"></el-option>
+				      <el-option label="用户编号" value="userNo"></el-option>
+				      <el-option label="用户名称" value="userNm"></el-option>
+					  <el-option label="登录名称" value="loginId"></el-option>
+					  <el-option label="最近登录时间" value="lastLoginTime"></el-option>
+				      <el-option label="机构" value="orgNo"></el-option>
 				    </el-select>
-				    <el-button slot="append" icon="el-icon-search"></el-button>
+				    <el-button slot="append" icon="el-icon-search" v-on:click="query()"></el-button>
 				</el-input>
 				
 				<el-table :data="tableData"  :key="Math.random()"  
 				:row-class-name="tableRowClassName"
 				
 				style="width: 100%" height="100%">
-				    <el-table-column prop="user_num" label="工号" sortable>
+				    <el-table-column prop="userNo" label="工号" sortable>
 				      <template slot-scope="scope">
 				        <i class="el-icon-time"></i>
-				        <span style="margin-left: 10px">{{ scope.row.user_num }}</span>
+				        <span style="margin-left: 10px">{{ scope.row.userNo }}</span>
 				      </template>
 				    </el-table-column>
 				    <el-table-column label="姓名" >
 				      <template slot-scope="scope">
 				        <el-popover trigger="hover"  placement="top">
-				          <p>姓名: {{ scope.row.user_nm }}</p>
-				          <p>手机号: {{ scope.row.mob_phone_no }}</p>
-						  <p>状态: {{ scope.row.record_sts }}</p>
-						  <p>性别: {{ scope.row.sex_cd }}</p>
+				          <p>姓名: {{ scope.row.userNm }}</p>
+				          <p>手机号: {{ scope.row.mobPhoneNo }}</p>
+						  <p>状态: {{ scope.row.recordSts }}</p>
+						  <p>性别: {{ scope.row.sexCd }}</p>
 						  <p>邮件: {{ scope.row.email }}</p>
 						  <p>创建时间: {{ scope.row.sys_create_time }}</p>
 				          <div slot="reference" class="name-wrapper">
-				            <el-tag size="medium" :type="getTagType(scope.row)" >{{ scope.row.name }}</el-tag>
+				            <el-tag size="medium" :type="getTagType(scope.row)" >{{ scope.row.userNm }}</el-tag>
 				          </div>
 				        </el-popover>
 				      </template>
@@ -73,7 +73,7 @@
 					<el-table-column label="机构" >
 					  <template slot-scope="scope">
 					    <i class="el-icon-time"></i>
-					    <span style="margin-left: 10px">{{ scope.row.orgName }}</span>
+					    <span style="margin-left: 10px">{{ scope.row.orgNo }}</span>
 					  </template>
 					</el-table-column>
 				    <el-table-column label="操作" width="180">
@@ -100,6 +100,20 @@
   export default {
 	created:function (){
 		//初始化方法写这里 最后 this.tableData = 查出来的值
+		let _this = this;
+		this.$axios({
+			method:'get',
+			// data:{'username':_this.username,'password':_this.password},
+			// url:'/app/system/login'
+			url:'/app/user/select?pageNum=1&pageSize=10'
+		}).then(function(res){
+			window.console.log(res)
+			window.console.log(res.data.code);
+			window.console.log(res.data.message);
+			window.console.log(res.data.data.result);
+			_this.tableData =res.data.data.result; 
+		});
+		
 	},
 	components: {
 	"empTabs":empTabs,
@@ -119,33 +133,51 @@
 		mmp:'',
 		context:'',
 		tableData: [{
-		          user_no: '319977',
-		          user_nm: '孙源鹏',
-		          mob_phone_no: '18217284823',
-				  record_sts:'运行',
-				  sex_cd:'男'
+		          userNo: '319977',
+		          userNm: '孙源鹏',
+		          mobPhoneNo: '18217284823',
+				  recordSts:'运行',
+				  sexCd:'男'
 		        }, {
-		          user_num: '302291',
-		          user_nm: '王小虎',
-				  mob_phone_no: '18217284823',
-				  record_sts:'停用',
-				  sex_cd:'男'
+		          userNo: '302291',
+		          userNm: '王小虎',
+				  mobPhoneNo: '18217284823',
+				  recordSts:'停用',
+				  sexCd:'男'
 		        }, {
-		          user_num: '302912',
-		          user_nm: '朱发营',
-				  mob_phone_no: '18217284823',
-				  record_sts:'锁定',
-				  sex_cd:'女'
+		          userNo: '302912',
+		          userNm: '朱发营',
+				  mobPhoneNo: '18217284823',
+				  recordSts:'锁定',
+				  sexCd:'女'
 		        }, {
-		          user_num: '10001',
-		          user_nm: '董事长',
-		          mob_phone_no: '18217284823',
-				  record_sts:'运行',
-				  sex_cd:'妖'
+		          userNo: '10001',
+		          userNm: '董事长',
+		          mobPhoneNo: '18217284823',
+				  recordSts:'运行',
+				  sexCd:'妖'
 		        }]
       };
     },
     methods: {
+		
+	  query(){
+		  let _this = this;
+		  window.console.log(_this.serchInput);
+		  this.$axios({
+		  	method:'get',
+		  	data:{'userNo':_this.serchInput},
+		  	// data:{'username':_this.username,'password':_this.password},
+		  	// url:'/app/system/login'
+		  	url:'/app/user/select?pageNum=1&pageSize=10&userNo='+_this.serchInput
+		  }).then(function(res){
+		  	window.console.log(res)
+		  	window.console.log(res.data.code);
+		  	window.console.log(res.data.message);
+		  	window.console.log(res.data.data.result);
+		  	_this.tableData =res.data.data.result; 
+		  });
+	  },
       handleCheckChange(data, checked, indeterminate) {
         console.log(data, checked, indeterminate);
       },
