@@ -58,7 +58,18 @@
     },
 	methods:{
 		save(){
-			
+			let _this = this;
+			this.$axios({
+				method:'post',
+				data:{'role':_this.data},
+				// url:'/app/system/login'
+				url:'/app/role/insertRole?pageNum=1'
+			}).then(function(res){
+				window.console.log(res)
+				window.console.log(res.data.code);
+				window.console.log(res.data.message);
+				window.console.log(res.data.data.result);
+			});
 		},
 		change(){//左右数据穿梭发生变化时
 			window.console.log('----change----');
