@@ -8,6 +8,9 @@
     :data="data"
 	:titles="['未拥有岗位', '已拥有岗位']"
 	style="margin-left:25px;min-height: 400px;"
+	@change="change()"
+	@left-check-change="leftChange()"
+	@right-check-change="rightChange()"
 	>
   </el-transfer>
   <el-col style="text-align: center;">
@@ -19,17 +22,22 @@
       :right-default-checked="[1]" 默认选中项目 -->
 <script>
   export default {
+	created:function () {
+		//页面初始化方法
+		this.value = ['客户经理岗'];//初始化已有岗位
+	},
     data() {
       const generateData = _ => {
-		//初始化数据
+		 
+		//初始化全部岗位
         const data = [];
         const cities = ['客户经理岗', '营销团队负责人', '行长', '授信管理岗', '有权签批人', '审核初审岗', '有权复审人'];
-        const serch = ['客户经理岗', '营销团队负责人', '行长', '授信管理岗', '有权签批人', '审核初审岗', '有权复审人'];
-        cities.forEach((city, index) => {
+        //const serch = ['客户经理岗', '营销团队负责人', '行长', '授信管理岗', '有权签批人', '审核初审岗', '有权复审人'];
+        cities.forEach((value, index) => {
           data.push({
-            label: city,
-            key: index,
-            serch: serch[index]
+            label: value,
+            key: value,
+            serch: cities[index]
           });
         });
         return data;
@@ -46,6 +54,18 @@
 		save(){
 			
 		},
+		change(){//左右数据穿梭发生变化时
+			window.console.log('----change----');
+			window.console.log(this.value+"");
+		},
+		leftChange(){//左边勾选发生变化时
+			window.console.log('----Leftchange----');
+			window.console.log(this.value+"");
+		},
+		rightChange(){//右边勾选发生变化时
+			window.console.log('----Rightchange----');
+			window.console.log(this.value+"");
+		}
 	}
   };
 </script>
