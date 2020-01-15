@@ -7,8 +7,8 @@ import Router from 'vue-router'
 import index from '@/mainframe/index' //
 import login from '@/mainframe/login';
 import empcrud  from '@/sysadmin/emp/empCrud'
-import orgcrud  from '@/sysadmin/orgcrud'
-import menucrud  from '@/sysadmin/menucrud'
+import orgcrud  from '@/sysadmin/orgCrud'
+import menucrud  from '@/sysadmin/menuCrud'
 Vue.use(Router) //安装路由
 
 
