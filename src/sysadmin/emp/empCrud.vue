@@ -212,11 +212,11 @@
         }, 200);
       },/*下面是Table相关方法*/
 	  tableRowClassName({row, rowIndex}) {
-	          if (row.state=="运行") {
+	          if (row.recordSts=="运行") {
 	            return 'success-row';
-	          }else if (row.state === "锁定") {
+	          }else if (row.recordSts === "锁定") {
 	            return 'warning-row';
-	          }else if (row.state === "停用") {
+	          }else if (row.recordSts === "停用") {
 	            return 'error-row';
 	          }
 	          return '';
@@ -234,7 +234,7 @@
 	   },
 	   getTagType(row){
 		  window.console.log(row)
-		  return row.state!='运行'?(row.state=='停用'?'danger':'warning'):'';
+		  return row.recordSts!='运行'?(row.recordSts=='停用'?'danger':'warning'):'';
 	   },
 	   handleClose(done) {
 	           this.$confirm('确认关闭？')
