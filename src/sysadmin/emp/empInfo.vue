@@ -171,6 +171,20 @@
     },
     methods: {
       submitForm(formName) {
+		  let _this = this;
+		  this.$axios({
+		  	method:'post',
+		  	data:{'user':_this.ruleForm},
+		  	// url:'/app/system/login'
+		  	url:'/app/user/add?pageNum=1'
+		  }).then(function(res){
+		  	window.console.log(res)
+		  	window.console.log(res.data.code);
+		  	window.console.log(res.data.message);
+		  	window.console.log(res.data.data.result);
+		  	_this.tableData =res.data.data.result; 
+		  });
+		  
         this.$refs[formName].validate((valid) => {
           if (valid) {
             alert('submit!');
