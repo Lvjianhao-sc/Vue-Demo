@@ -3,21 +3,21 @@
 	
 	<el-row>
 		<el-col :span="12">
-		  <el-form-item label="工号" prop="user_no">
-			<el-input v-model="ruleForm.user_no"></el-input>
+		  <el-form-item label="工号" prop="userNo">
+			<el-input v-model="ruleForm.userNo"></el-input>
 		  </el-form-item>
 		</el-col>
 		<el-col :span="12">
-		  <el-form-item label="姓名" prop="user_nm">
-			<el-input v-model="ruleForm.user_nm"></el-input>
+		  <el-form-item label="姓名" prop="userNm">
+			<el-input v-model="ruleForm.userNm"></el-input>
 		  </el-form-item>
 		</el-col>	  
 	</el-row>
 	
 	<el-row>
 		<el-col :span="12">
-		  <el-form-item label="账号" prop="login_id">
-			<el-input v-model="ruleForm.login_id" ></el-input>
+		  <el-form-item label="账号" prop="loginId">
+			<el-input v-model="ruleForm.loginId" ></el-input>
 		  </el-form-item>
 		</el-col>
 		<el-col :span="12">
@@ -29,34 +29,34 @@
 	
 	<el-row>
 		<el-col :span="12">
-		  <el-form-item label="机构ID" prop="org_id">
-			<el-input v-model="ruleForm.org_id" ></el-input>
+		  <el-form-item label="机构ID" prop="orgId">
+			<el-input v-model="ruleForm.orgId" ></el-input>
 		  </el-form-item>
 		</el-col>
 		<el-col :span="12">
-		  <el-form-item label="机构编号" prop="org_no">
-			<el-input v-model="ruleForm.org_no"></el-input>
+		  <el-form-item label="机构编号" prop="orgNo">
+			<el-input v-model="ruleForm.orgNo"></el-input>
 		  </el-form-item>
 		</el-col>	  
 	</el-row>
 	
 	<el-row>
 		<el-col :span="12">
-		  <el-form-item label="部门ID" prop="dept_id">
-			<el-input v-model="ruleForm.org_id" ></el-input>
+		  <el-form-item label="部门ID" prop="deptId">
+			<el-input v-model="ruleForm.orgId" ></el-input>
 		  </el-form-item>
 		</el-col>
 		<el-col :span="12">
-		  <el-form-item label="部门编号" prop="dept_no">
-			<el-input v-model="ruleForm.org_no"></el-input>
+		  <el-form-item label="部门编号" prop="deptNo">
+			<el-input v-model="ruleForm.orgNo"></el-input>
 		  </el-form-item>
 		</el-col>	  
 	</el-row>
 	
 	<el-row>
 		<el-col :span="12">
-		  <el-form-item label="性别" prop="sex_cd">
-		    <el-radio-group v-model="ruleForm.sex_cd">
+		  <el-form-item label="性别" prop="sexCd">
+		    <el-radio-group v-model="ruleForm.sexCd">
 		      <el-radio border label="男"></el-radio>
 		      <el-radio border label="女"></el-radio>
 		    </el-radio-group>
@@ -70,8 +70,8 @@
 	</el-row>
 	<el-row>
 		<el-col :span="16">
-		  <el-form-item label="状态"  prop="record_sts">
-		  			<el-radio-group  v-model="ruleForm.record_sts" >
+		  <el-form-item label="状态"  prop="recordSts">
+		  			<el-radio-group  v-model="ruleForm.recordSts" >
 		  			  <el-radio border label="运行"></el-radio>
 		  			  <el-radio border label="锁定"></el-radio>
 		  			  <el-radio border label="停用"></el-radio>
@@ -86,13 +86,13 @@
 	
 	<el-row>
 		<el-col :span="12">
-		  <el-form-item label="电话" prop="telphone_no">
-			<el-input v-model="ruleForm.telphone_no" ></el-input>
+		  <el-form-item label="电话" prop="telphoneNo">
+			<el-input v-model="ruleForm.telphoneNo" ></el-input>
 		  </el-form-item>
 		</el-col>
 		<el-col :span="12">
-		  <el-form-item label="手机号码" prop="mob_phone_no">
-			<el-input v-model="ruleForm.mob_phone_no"></el-input>
+		  <el-form-item label="手机号码" prop="mobPhoneNo">
+			<el-input v-model="ruleForm.mobPhoneNo"></el-input>
 		  </el-form-item>
 		</el-col>	  
 	</el-row>
@@ -128,39 +128,39 @@
     data() {
       return {
         ruleForm: {
-          user_no:'',
-          user_nm:'',
-          login_id:'',
-          org_id:'',
-          org_no:'',
-          org_name:'',
-          dept_id:'',
-          dept_no:'',
-          dept_name:'',
-          sex_cd:'',
+          userNo:'',
+          userNm:'',
+          loginId:'',
+          orgId:'',
+          orgNo:'',
+          orgName:'',
+          deptId:'',
+          deptNo:'',
+          deptName:'',
+          sexCd:'',
           email:'',
-          telphone_no:'',
-          mob_phone_no:'',
-          record_sts:'',
+          telphoneNo:'',
+          mobPhoneNo:'',
+          recordSts:'',
         },
         rules: {
-          user_no: [
+          userNo: [
             { required: true, message: '请输入活动名称', trigger: 'blur' },
             { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
           ],
-          user_nm: [
+          userNm: [
             { required: true, message: '请选择活动区域', trigger: 'change' }
           ],
           login_pwd: [
             { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
           ],
-          org_id: [
+          orgId: [
             { type: 'date', required: true, message: '请选择时间', trigger: 'change' }
           ],
-          org_no: [
+          orgNo: [
             { type: 'array', required: true, message: '请至少选择一个活动性质', trigger: 'change' }
           ],
-          record_sts: [
+          recordSts: [
             { required: true, message: '请选择活动资源', trigger: 'change' }
           ],
           desc: [
