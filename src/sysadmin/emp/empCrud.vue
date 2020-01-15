@@ -49,10 +49,10 @@
 				:row-class-name="tableRowClassName"
 				
 				style="width: 100%" height="100%">
-				    <el-table-column prop="user_num" label="工号" sortable>
+				    <el-table-column prop="user_no" label="工号" sortable>
 				      <template slot-scope="scope">
-				        <i class="el-icon-time"></i>
-				        <span style="margin-left: 10px">{{ scope.row.user_num }}</span>
+				        <i class="iconfont icon_boss"></i>
+				        <span style="margin-left: 10px">{{ scope.row.user_no }}</span>
 				      </template>
 				    </el-table-column>
 				    <el-table-column label="姓名" >
@@ -65,7 +65,7 @@
 						  <p>邮件: {{ scope.row.email }}</p>
 						  <p>创建时间: {{ scope.row.sys_create_time }}</p>
 				          <div slot="reference" class="name-wrapper">
-				            <el-tag size="medium" :type="getTagType(scope.row)" >{{ scope.row.name }}</el-tag>
+				            <el-tag size="medium" :type="getTagType(scope.row)" >{{ scope.row.user_nm }}</el-tag>
 				          </div>
 				        </el-popover>
 				      </template>
@@ -74,6 +74,12 @@
 					  <template slot-scope="scope">
 					    <i class="el-icon-time"></i>
 					    <span style="margin-left: 10px">{{ scope.row.orgName }}</span>
+					  </template>
+					</el-table-column>
+					<el-table-column prop="last_login_time" label="最后登录时间" sortable>
+					  <template slot-scope="scope">
+					    <i class="el-icon-time"></i>
+					    <span style="margin-left: 10px">{{ scope.row.last_login_time }}</span>
 					  </template>
 					</el-table-column>
 				    <el-table-column label="操作" width="180">
@@ -123,25 +129,29 @@
 		          user_nm: '孙源鹏',
 		          mob_phone_no: '18217284823',
 				  record_sts:'运行',
-				  sex_cd:'男'
+				  sex_cd:'男',
+				  last_login_time:'2019-01-15 10:15:23'
 		        }, {
-		          user_num: '302291',
+		          user_no: '302291',
 		          user_nm: '王小虎',
 				  mob_phone_no: '18217284823',
 				  record_sts:'停用',
-				  sex_cd:'男'
+				  sex_cd:'男',
+				  last_login_time:'2019-01-15 10:15:23'
 		        }, {
-		          user_num: '302912',
+		          user_no: '302912',
 		          user_nm: '朱发营',
 				  mob_phone_no: '18217284823',
 				  record_sts:'锁定',
-				  sex_cd:'女'
+				  sex_cd:'女',
+				  last_login_time:'2019-01-15 10:15:23'
 		        }, {
-		          user_num: '10001',
+		          user_no: '10001',
 		          user_nm: '董事长',
 		          mob_phone_no: '18217284823',
 				  record_sts:'运行',
-				  sex_cd:'妖'
+				  sex_cd:'妖',
+				  last_login_time:'2019-01-15 10:15:23'
 		        }]
       };
     },
@@ -180,11 +190,11 @@
         }, 200);
       },/*下面是Table相关方法*/
 	  tableRowClassName({row, rowIndex}) {
-	          if (row.state=="运行") {
+	          if (row.record_sts=="运行") {
 	            return 'success-row';
-	          }else if (row.state === "锁定") {
+	          }else if (row.record_sts === "锁定") {
 	            return 'warning-row';
-	          }else if (row.state === "停用") {
+	          }else if (row.record_sts === "停用") {
 	            return 'error-row';
 	          }
 	          return '';
@@ -202,7 +212,7 @@
 	   },
 	   getTagType(row){
 		  window.console.log(row)
-		  return row.state!='运行'?(row.state=='停用'?'danger':'warning'):'';
+		  return row.record_sts!='运行'?(row.record_sts=='停用'?'danger':'warning'):'';
 	   },
 	   handleClose(done) {
 	           this.$confirm('确认关闭？')
