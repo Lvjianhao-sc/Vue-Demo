@@ -20,7 +20,11 @@ Vue.use(CollapseTransition.name, CollapseTransition)
 Vue.use(ElementUI, { zIndex: 3000 });//安装ElementUi 设置组件的默认尺寸均为 'small'，弹框的初始 z-index 为 3000
 //--------ElementUI样式结束-------//
 
-import * as echarts from 'echarts/lib/echarts';//引入Echart
+import echarts from 'echarts';//引入Echart
+require('echarts/lib/chart/bar')
+// 引入提示框和title组件
+require('echarts/lib/component/tooltip')
+require('echarts/lib/component/title')
 Vue.prototype.$echarts =echarts;// 引入 echarts 主模块。
 import "./assets/iconfont/iconfont.css"; //引入阿里巴巴矢量图标库
 import VueFab from 'vue-float-action-button'//悬浮按钮

@@ -12,14 +12,29 @@
 				<div class="grid-content ">role/posi</div>
 			</el-col>
 		    <el-col :span="6">
-				<div class="grid-content ">user/org/loginOut...</div>
+				<msg></msg>			
 			</el-col>
 		</el-row>
 	</div>
 </template>
 
 <script>
-	export default {}
+	import msg from './index-head-msg.vue'
+	export default {
+		methods:{
+			msgClick(obj){
+				this.$message({
+					message: '点击了'+obj,
+					type: 'warning',
+					showClose:true
+				});	
+			}
+		},
+		components:{
+			'msg':msg
+		}
+		
+	}
 </script>
 
 <style>
@@ -54,6 +69,7 @@
 	line-height: 70px;
 	font-size: 18px;
 	font-weight: bold;
+	z-index: 0;
 }
 
 </style>
