@@ -152,13 +152,13 @@
             { required: true, message: '请选择活动区域', trigger: 'change' }
           ],
           login_pwd: [
-            { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
+            {  required: true, message: '请选择日期', trigger: 'change' }
           ],
           orgId: [
-            { type: 'date', required: true, message: '请选择时间', trigger: 'change' }
+            { required: true, message: '请选择时间', trigger: 'change' }
           ],
           orgNo: [
-            { type: 'array', required: true, message: '请至少选择一个活动性质', trigger: 'change' }
+            {  required: false, message: '请至少选择一个活动性质', trigger: 'change' }
           ],
           recordSts: [
             { required: true, message: '请选择活动资源', trigger: 'change' }
@@ -172,17 +172,17 @@
     methods: {
       submitForm(formName) {
 		  let _this = this;
+		  window.console.log(_this.ruleForm);
 		  this.$axios({
 		  	method:'post',
 		  	data:{'user':_this.ruleForm},
 		  	// url:'/app/system/login'
 		  	url:'/app/user/add?pageNum=1'
 		  }).then(function(res){
-		  	window.console.log(res)
+		  	window.console.log(res);
 		  	window.console.log(res.data.code);
 		  	window.console.log(res.data.message);
 		  	window.console.log(res.data.data.result);
-		  	_this.tableData =res.data.data.result; 
 		  });
 		  
         this.$refs[formName].validate((valid) => {
