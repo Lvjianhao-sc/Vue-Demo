@@ -225,12 +225,26 @@
 		 this.drawer = true;//打开面板
 		 this.selectRow.row = row;
 	   },
+	   
 	   rowDelete(index,row){
-		 _this.$notify({
-		 	title: '成功',
-		     message: '数据删除成功',
-		     type: 'success'
-		 });	
+		   let _this = this;
+		   
+		 window.console.log(row.userNo);
+		 this.$axios({
+			 method:'delete',
+			 data:row.userNo,
+			 url:'/app/user/delete?wd=1'
+		 }).then(function(res){
+			 window.console.log(res);
+			 if(res.data.code==0)
+			 _this.$notify({
+			 	title: '成功',
+			     message: '数据删除成功',
+			     type: 'success'
+			 });	
+		 });
+		 
+		
 	   },
 	   getTagType(row){
 		  window.console.log(row)
