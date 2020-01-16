@@ -21,8 +21,8 @@
 		  </el-form-item>
 		</el-col>
 		<el-col :span="12">
-		  <el-form-item label="密码" prop="password">
-			<el-input type="password" v-model="ruleForm.password"></el-input>
+		  <el-form-item label="密码" prop="loginPwd">
+			<el-input type="loginPwd" v-model="ruleForm.loginPwd"></el-input>
 		  </el-form-item>
 		</el-col>	  
 	</el-row>
@@ -43,12 +43,12 @@
 	<el-row>
 		<el-col :span="12">
 		  <el-form-item label="部门ID" prop="deptId">
-			<el-input v-model="ruleForm.orgId" ></el-input>
+			<el-input v-model="ruleForm.deptId" ></el-input>
 		  </el-form-item>
 		</el-col>
 		<el-col :span="12">
 		  <el-form-item label="部门编号" prop="deptNo">
-			<el-input v-model="ruleForm.orgNo"></el-input>
+			<el-input v-model="ruleForm.deptNo"></el-input>
 		  </el-form-item>
 		</el-col>	  
 	</el-row>
@@ -96,7 +96,7 @@
 		  </el-form-item>
 		</el-col>	  
 	</el-row>
-	
+		
 	<el-form-item label="备注" prop="remarks">
 	  <el-input type="textarea" v-model="ruleForm.remarks"></el-input>
 	</el-form-item>
@@ -121,6 +121,28 @@
 </template>
 <script>
   export default {
+	 
+	created:function (){
+		window.console.log("======");
+		 window.console.log(this.empid);
+		 window.console.log("======");
+		
+		let _this = this;
+		this.$axios({
+			method:'get',
+			// data:{'username':_this.username,'password':_this.password},
+			// url:'/app/system/login'
+			url:'/app/user/selectByUserNo?userNo='
+		}).then(function(res){
+			window.console.log(res)
+			window.console.log(res.data.code);
+			window.console.log(res.data.message);
+			window.console.log(res.data.data.result);
+			_this.ruleForm =res.data.data.result; 
+		});
+		
+	},  
+	  
 	name:'empInfo',
 	props:{
 		empId:String
@@ -131,6 +153,7 @@
           userNo:'',
           userNm:'',
           loginId:'',
+		  loginPwd:'',
           orgId:'',
           orgNo:'',
           orgName:'',
@@ -151,7 +174,7 @@
           userNm: [
             { required: true, message: '请选择活动区域', trigger: 'change' }
           ],
-          login_pwd: [
+          loginPwd: [
             {  required: true, message: '请选择日期', trigger: 'change' }
           ],
           orgId: [
@@ -175,16 +198,31 @@
 		  window.console.log(_this.ruleForm);
 		  this.$axios({
 		  	method:'post',
-		  	data:{'user':_this.ruleForm},
+		  	data:{
+				//'user':_this.ruleForm,
+				'userNo':_this.ruleForm.userNo,
+				'userNm':_this.ruleForm.userNm,
+				'loginId':_this.ruleForm.loginId,
+				'loginPwd':_this.ruleForm.loginPwd,
+				'orgId':_this.ruleForm.orgId,
+				'orgNo':_this.ruleForm.orgNo,
+				// 'orgName':_this.ruleForm.orgName,
+				'deptId':_this.ruleForm.deptId,
+				'deptNo':_this.ruleForm.deptNo,
+				// 'deptName':_this.ruleForm.deptName,
+				'sexCd':_this.ruleForm.sexCd,
+				'email':_this.ruleForm.email,
+				'telphoneNo':_this.ruleForm.telphoneNo,
+				'mobPhoneNo':_this.ruleForm.mobPhoneNo,
+				'recordSts':_this.ruleForm.recordSts
+			},
 		  	// url:'/app/system/login'
-		  	url:'/app/user/add?pageNum=1'
+		  	url:'/app/user/update?pageNum=1'
 		  }).then(function(res){
 		  	window.console.log(res);
 		  	window.console.log(res.data.code);
 		  	window.console.log(res.data.message);
-		  	window.console.log(res.data.data.result);
 		  });
-		  
         this.$refs[formName].validate((valid) => {
           if (valid) {
             alert('submit!');
