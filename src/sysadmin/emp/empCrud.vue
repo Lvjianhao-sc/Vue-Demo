@@ -3,11 +3,12 @@
 		
 		
 		<el-dialog 
-		  :title="this.selectRow.name"
+		  :title="selectRow.name"
 		  :visible.sync="drawer"
+		   v-if='drawer'
 		  :direction="direction"
 		  :before-close="handleClose"
-		  top="50px"
+		  top="20px"
 		>
 		  <!-- 表单内容 -->·
 		  <empTabs empid="12345"></empTabs>
