@@ -1,10 +1,11 @@
 <template>
 	<div id = "msg">
-		<el-badge is-dot  class="item">
-		<el-dropdown size="small"  type="primary" @command="msgClick">
+		<el-badge is-dot  class="item"><!-- 这个是红点标记 is-dot存在代表需要红点 -->
+		<el-dropdown bottom  type="primary" @command="msgClick">
 		  
-		  <el-button type="primary">
-			  消息提醒<i class="el-icon-arrow-down el-icon--right"></i>
+		  <el-button type="primary" size="small">
+			  <span style="font-">通知</span>
+			  <i class="el-icon-arrow-down el-icon--right"></i>
 		  </el-button>
 		  
 		  <el-dropdown-menu slot="dropdown">
@@ -28,6 +29,11 @@
 
 <script>
 	export default {
+		data(){
+			return {
+				
+			}
+		},
 		methods:{
 			msgClick(obj){
 				this.$message({
@@ -44,8 +50,7 @@
 
 <style>
 	#msg{
-		position: absolute;
-		bottom: 0;
-		right: 5px;
+		
+		
 	}
 </style>
