@@ -3,18 +3,43 @@
 		
 		<el-row :gutter="20">
 			<el-col :span="8" >
-				<div  id="myChart" >
-					echarts
-				</div>
+				<el-card :body-style="{ padding: '0px' }">
+				      <div  id="myChart" >
+				      	echarts
+				      </div>
+				</el-card>
+				
 			</el-col>
 			<el-col :span="5" >
-				<div class="grid-content ">DataList</div>
+				<el-card :body-style="{ padding: '0px' }" style="height:400px;">
+				      <img src="./images/zfy3.gif" style="width:100%;" class="image">
+				      <div style="padding: 24px;padding-top:145px">
+				        <span>FYSL</span>
+				        <div class="bottom clearfix">
+				          <time class="time">2019-01-17</time>
+				          <el-button type="text" class="button">点击查看</el-button>
+				        </div>
+				      </div>
+				</el-card>
 			</el-col>
-			<el-col :span="5">
-				<div class="grid-content ">opsition</div>
+			<el-col :span="6">
+				<el-card :body-style="{ padding: '0px' }" class="grid-content ">
+					
+				     Buttons
+				</el-card>
 			</el-col>
-		    <el-col :span="6">
-				<div class="grid-content ">Buttons</div>
+		    <el-col :span="5">
+				<el-card :body-style="{ padding: '0px' }" style="height:400px;">
+				      <img src="./images/zfy2.gif" style="width:100%;" class="image">
+				      <div style="padding: 24px;padding-top:100px">
+				        <span>FYSL</span>
+				        <div class="bottom clearfix">
+				          <time class="time">2019-01-17</time>
+				          <el-button type="text" class="button">点击查看</el-button>
+				        </div>
+				      </div>
+				</el-card>
+				
 			</el-col>
 			
 		</el-row>
@@ -27,7 +52,8 @@
 	  name: 'hello',
 	  data () {
 	    return {
-	      msg: 'Welcome to Your Vue.js App'
+	      msg: 'Welcome to Your Vue.js App',
+		  currentDate:new Date()
 	    }
 	  },
 	  mounted(){
@@ -85,7 +111,6 @@
 #m .grid-content {
 	border-radius: 4px;
 	height:400px;
-	background: #CCCCCC;
 	text-align: center;
 	line-height: 400px;
 	font-size: 18px;

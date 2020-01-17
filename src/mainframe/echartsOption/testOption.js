@@ -96,7 +96,8 @@ const Option = {
                          interval:0,
                          textStyle:{
                              color:'#333333',
-                             fontSize:10
+                             fontSize:13,
+
                          },
                          formatter:function(name){
      		            	if(name.length>2){
@@ -106,7 +107,7 @@ const Option = {
      	            	}
                      },
                      itemStyle:{
-                         fontSize:6
+                         fontSize:8
                      },
                      axisTick:{
                          show:false
@@ -114,11 +115,12 @@ const Option = {
                  }
              ],
              grid:{
-                 top:max?'25%':'20%'
+                 top:max?'25%':'20%',
+				 
              },
              legend: {
                  data:['集团成员数','风险客户数','本分行主办集团数','集团客户数','集团授信额度','集团额度占用'],
-                 padding:[0,-45,0,0],
+                 padding:[5,-15,0,0],
                  show:max?true:false
              },
              yAxis : [
