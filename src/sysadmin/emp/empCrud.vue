@@ -3,7 +3,7 @@
 		
 		
 		<el-dialog 
-		  :title="selectRow.name"
+		  :title="selectRow.userNm"
 		  :visible.sync="drawer"
 		   v-if='drawer'
 		  :direction="direction"
@@ -11,7 +11,7 @@
 		  top="20px"
 		>
 		  <!-- 表单内容 -->·
-		  <empTabs empid="12345"></empTabs>
+		  <empTabs :empId="selectEmpId"></empTabs>
 		</el-dialog>
 		
 		
@@ -32,7 +32,7 @@
 				</el-tree>
 			</el-col>
 			<el-col class="nbsp" :span="0.1">
-				&nbsp{{this.selectRow.name}}
+				&nbsp{{this.selectRow.userNm}}
 			</el-col>
 			<el-col class="empmain" :span="17" >
 				<el-input placeholder="请输入内容" v-model="serchInput" class="input-with-select">
@@ -124,6 +124,7 @@
 		drawer: false,//面板状态
 		direction: 'rtl',//滑出方式
 		selectRow:{},//选中行
+		selectEmpId:'未选择',//选中数据的ID
         props: {
           label: 'name',
           children: 'zones'
@@ -225,6 +226,7 @@
 	   rowEdit(index,row){
 		 this.drawer = true;//打开面板
 		 this.selectRow.row = row;
+		 this.selectEmpId = row.userNm;
 	   },
 	   rowDelete(index,row){
 		 _this.$notify({

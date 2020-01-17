@@ -1,8 +1,8 @@
 <template>
   <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
-    <el-tab-pane label="基本信息"  name="first"><empInfo></empInfo></el-tab-pane>
-    <el-tab-pane label="角色信息"  name="second"><empRole></empRole></el-tab-pane>
-    <el-tab-pane label="岗位信息"  name="third"><empPosition></empPosition></el-tab-pane>
+    <el-tab-pane label="基本信息"  name="first"><empInfo :empId="empId"></empInfo></el-tab-pane>
+    <el-tab-pane label="角色信息"  name="second"><empRole :empId="empId"></empRole></el-tab-pane>
+    <el-tab-pane label="岗位信息"  name="third"><empPosition :empId="empId"></empPosition></el-tab-pane>
   </el-tabs>
 </template>
 <script>
@@ -15,6 +15,9 @@
 		"empPosition":empPosition,
 		"empRole":empRole
 	},
+	props:{
+		empId:String
+	},
 	name:'empEditTabs',
     data() {
       return {
@@ -25,6 +28,7 @@
       handleClick(tab, event) {
         console.log(tab, event);
       }
-    }
+    },
+	
   };
 </script>

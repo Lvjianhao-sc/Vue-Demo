@@ -26,6 +26,9 @@
 		//页面初始化方法
 		this.value = ['客户经理岗'];//初始化已有岗位
 	},
+	props:{
+		empId:String
+	},
     data() {
       const generateData = _ => {
 		 

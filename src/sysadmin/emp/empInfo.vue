@@ -1,6 +1,6 @@
 <template>
 <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" size="mini" class="demo-ruleForm">
-	
+	{{empId}}
 	<el-row>
 		<el-col :span="12">
 		  <el-form-item label="工号" prop="userNo">
@@ -122,6 +122,9 @@
 <script>
   export default {
 	name:'empInfo',
+	created:function(){
+		
+	},
 	props:{
 		empId:String
 	},
